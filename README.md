@@ -18,7 +18,7 @@
   python crypto.py --message "abc" --caesar-shift 3
 ```</pre>
 ## Requirements:
-  pip install cryptography
+` pip install -r requirements.txt `
 ## === CIA TRIAD (How this demo upholds it) ===
 - Confidentiality: AES-256-GCM encrypts the data so only key holders can read it.
 - Integrity: SHA-256 hashes are compared; AES-GCM also authenticates data with its tag.
