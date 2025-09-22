@@ -12,10 +12,11 @@
 - Simple substitution cipher: Caesar shift demo (educational only)
 
 ## Usage examples:
+<pre>```
   python crypto.py --message "hello world"
   python crypto.py --file ./example.txt
   python crypto.py --message "abc" --caesar-shift 3
-
+```</pre>
 ## Requirements:
   pip install cryptography
 ## === CIA TRIAD (How this demo upholds it) ===
