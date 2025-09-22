@@ -14,9 +14,9 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import (
 from cryptography.hazmat.primitives import serialization
 
 
-# ----------------------------
+
 # 1) Simple Substitution (Caesar)
-# ----------------------------
+
 ALPHABET = "abcdefghijklmnopqrstuvwxyz"
 
 def caesar_shift(text: str, shift: int) -> str:
@@ -33,16 +33,16 @@ def caesar_shift(text: str, shift: int) -> str:
     return "".join(out)
 
 
-# ----------------------------
+
 # 2) SHA-256 Hash (Integrity)
-# ----------------------------
+
 def sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-# ----------------------------
+
 # 3) AES-256-GCM (Symmetric)
-# ----------------------------
+
 @dataclass
 class AESPackage:
     key_b64: str
@@ -70,9 +70,8 @@ def aes_gcm_decrypt(pkg: AESPackage, aad: bytes | None = None) -> bytes:
     return aes.decrypt(nonce, ct, aad)
 
 
-# ----------------------------
 # 4) Digital Signatures (Ed25519)
-# ----------------------------
+
 @dataclass
 class SigBundle:
     public_key_pem: str
@@ -106,9 +105,9 @@ def verify_digest_ed25519(digest_hex: str, public_key_pem: str, signature_b64: s
         return False
 
 
-# ----------------------------
+
 # I/O Helpers
-# ----------------------------
+
 def read_input_bytes(args: argparse.Namespace) -> bytes:
     if args.message is not None:
         return args.message.encode("utf-8")
@@ -118,9 +117,9 @@ def read_input_bytes(args: argparse.Namespace) -> bytes:
     raise ValueError("Provide --message or --file")
 
 
-# ----------------------------
+
 # Main
-# ----------------------------
+
 def main():
     p = argparse.ArgumentParser(description="Crypto Demo")
     src = p.add_mutually_exclusive_group(required=True)
@@ -179,4 +178,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
